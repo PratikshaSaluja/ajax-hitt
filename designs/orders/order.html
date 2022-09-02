@@ -1,0 +1,35 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="container">
+   <div class="border rounded p-5 m-5">
+        <p class="display-4 pl-4 ml-4">Your Orders</p>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><a href="{% url 'description' order.product.id %}"><img style="height: 80px;" class="rounded-circle" src="../../media/{{order.product.image}}" alt=""><br>
+                     </a></td>
+                    <td>{{order.product.product_name}}</td>
+                    <td>{{order.date}}</td>
+                    <td>{{order.status}}</td>
+                    
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+   </div>
+</div>
+{% endblock %}
+
